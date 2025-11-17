@@ -13,12 +13,14 @@ DESTDIR = ./bin
 
 
 SOURCES += \
+    global.cpp \
     logindialog.cpp \
     main.cpp \
     mainwindow.cpp \
     registerdialog.cpp
 
 HEADERS += \
+    global.h \
     logindialog.h \
     mainwindow.h \
     registerdialog.h

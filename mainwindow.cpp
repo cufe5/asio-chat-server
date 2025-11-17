@@ -8,12 +8,15 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
     login_dlg = new LoginDialog(this);
     setCentralWidget(login_dlg);
-    login_dlg->show();
 
     reg_dlg = new RegisterDialog(this);
 
     //创建注册连接
     connect(login_dlg,&LoginDialog::switchRegister,this,&MainWindow::slotSwitchReg);
+
+    login_dlg->setWindowFlags(Qt::CustomizeWindowHint|Qt::FramelessWindowHint);
+    reg_dlg->setWindowFlags(Qt::CustomizeWindowHint|Qt::FramelessWindowHint);
+    reg_dlg->hide();
 }
 
 MainWindow::~MainWindow()
