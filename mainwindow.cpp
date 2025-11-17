@@ -6,9 +6,25 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    login_dlg = new LoginDialog(this);
+    setCentralWidget(login_dlg);
+    login_dlg->show();
+
+    reg_dlg = new RegisterDialog(this);
+
+    //创建注册连接
+    connect(login_dlg,&LoginDialog::switchRegister,this,&MainWindow::slotSwitchReg);
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+void MainWindow::slotSwitchReg()
+{
+    setCentralWidget(reg_dlg);
+    login_dlg->hide();
+    reg_dlg->show();
+
 }
