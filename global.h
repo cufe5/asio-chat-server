@@ -4,6 +4,9 @@
 #include <functional>
 #include <QRegularExpression>
 #include <QStyle>
+#include<memory.h>
+#include<iostream>
+#include<mutex>
 /**
  * @brief repolish 用来刷新qss
  */

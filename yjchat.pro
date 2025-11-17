@@ -23,7 +23,8 @@ HEADERS += \
     global.h \
     logindialog.h \
     mainwindow.h \
-    registerdialog.h
+    registerdialog.h \
+    singleton.h
 
 FORMS += \
     logindialog.ui \
