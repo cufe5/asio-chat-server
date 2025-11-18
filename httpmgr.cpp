@@ -11,6 +11,7 @@ void HttpMgr::PostHttpReq(QUrl url, QJsonObject json, ReqId req_id, Modules mod)
     QNetworkRequest request(url);
     request.setHeader(QNetworkRequest::ContentTypeHeader,"application/json");
     request.setHeader(QNetworkRequest::ContentLengthHeader,QByteArray::number(data.length()));
+    //生成智能指针，使this引用数+1 防止被提前回收
     auto self = shared_from_this();
     QNetworkReply *reply = _manager.post(request,data);
     QObject::connect(reply,&QNetworkReply::finished,[self,reply,req_id,mod](){
@@ -37,7 +38,7 @@ void HttpMgr::slot_http_finish(ReqId id, QString res, ErrorCodes err, Modules mo
 {
     if(mod == Modules::REGISTERMOD){
         //发送信号通知指定模块
-        emit sig_reg_mod_finish(id,res,err);
+        emit sig_reg_mod_finish(id,res,err,mod);
     }
 }
 
